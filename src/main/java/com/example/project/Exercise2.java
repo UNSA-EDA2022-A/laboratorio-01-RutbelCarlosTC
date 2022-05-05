@@ -21,8 +21,32 @@ public class Exercise2 {
 	}
 
 	public Integer getMenorNumeroSaltos(int a []) {
-
-		// TO DO
+		int [] distancias = getDistancias(a);
+		int suma, saltos;
+		suma = saltos = 0;
+		for(int i = 0;i<distancias.length;i++){
+			if(distancias[i] > 50)
+				break;
+			suma += distancias[i];
+			if(i == distancias.length-1 && suma<=50){
+				saltos++;
+				return saltos;
+			}
+			if(suma > 50){
+				saltos++;
+				suma = 0;
+				i--;
+			}
+			
+		}
 		return -1;
+	}
+	public int[] getDistancias (int a []){
+		int distancias [] = new int [a.length];
+		distancias[0] = a[0];
+		for(int i = 1;i<a.length;i++){
+			distancias[i] = a[i] - a[i-1];
+		}
+		return distancias;
 	}
 }
