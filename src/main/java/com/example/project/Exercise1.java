@@ -19,7 +19,14 @@ public class Exercise1 {
 		char[] digitos = strNum.toCharArray();
 		
 		if(esBaseGabriel(a)){
-			return "esta en base gab";
+			int numeroGabriel=0;
+			int k = digitos.length;
+			for(char d: digitos){
+				int digitGab = Integer.parseInt(String.valueOf(d));
+				numeroGabriel+= digitGab*(Math.pow(2, k)-1);
+				k--;
+			}
+			return Integer.toString(numeroGabriel);
 		}
 		return "El numero proporcionado no esta en base Gabriel.";
 	}
